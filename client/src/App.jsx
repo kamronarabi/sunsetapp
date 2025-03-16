@@ -3,6 +3,7 @@ import axios from "axios"
 import Sun from "./Sun.jsx"
 import SearchBar from "./SearchBar.jsx"
 import Dashboard from "./Dashboard.jsx"
+import Title from "./Title.jsx"
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
       <Sun/>
+      <Title/>
       <SearchBar city={city} setCity={setCity}/>
       <Dashboard/>
     </>

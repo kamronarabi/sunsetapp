@@ -70,7 +70,7 @@ body {
   transition: all 0.5s;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 48%;
   transform: translateX(-50%);
   opacity: 0;
   animation: fadeIn 1s ease-in-out forwards;
@@ -111,5 +111,23 @@ body {
   }
 }
 
+.titlebox {
+  width: 600px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  opacity:0;
+  transform: translateX(-50%);
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 3s; 
+  z-index: 1;
+}
 
-
+.title{
+  font: italic 1.2rem "Fira Sans",
+  serif; ;
+  font-size:60px;
+  color: #024A62 ;
+  text-align: center;
+}
