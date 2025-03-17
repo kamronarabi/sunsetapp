@@ -15,9 +15,8 @@ const SearchBar = ({city, setCity}) => {
     const handleOnPlacesChanged = () => {
         const place = inputRef.current.getPlace()
         if (place && place.address_components) {
-            const cityName = place.address_components[0].long_name // Extracting city name
+            const cityName = place.address_components[0].long_name +","+place.address_components[2].short_name
             setCity(cityName)
-            console.log('City:', cityName)
         }
     }
 

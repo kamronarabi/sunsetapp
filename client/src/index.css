@@ -127,7 +127,21 @@ body {
 .title{
   font: italic 1.2rem "Fira Sans",
   serif; ;
-  font-size:60px;
+  font-size:65px;
   color: #024A62 ;
   text-align: center;
+  font-weight: bolder;
+}
+
+.timetillbox{
+  position: absolute;
+  left: 2%;
+  
+} 
+
+.timetill{
+  font: italic 1.2rem "Fira Sans", serif;
+  font-size:35px;
+  color: #024A62 ;
+ font-weight: bolder;
 }
