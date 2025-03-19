@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRef, useState } from 'react'
 import { useJsApiLoader, Autocomplete} from '@react-google-maps/api'
+import { motion } from 'framer-motion';
 
 const libs = ['places']
 
@@ -33,10 +34,12 @@ const SearchBar = ({city, setCity}) => {
                     componentRestrictions: { country: "us" }
                 }}
             >
-                <input
+                <motion.input
                     type="text"
                     className="searchbar"
                     placeholder="Enter a city..."
+                    animate={city ? { y: 15, x:-300 } : { y:130, x:-300  }}
+                    transition={{ duration: 0, ease: "linear" }}
                 />
             </Autocomplete>
         )}

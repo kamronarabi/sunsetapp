@@ -10,6 +10,7 @@ import Timetill from "./Timetill.jsx"
 function App() {
   const [city, setCity]=useState('')
   const [weatherData, setWeatherData]=useState(null)
+  const [aerosol, setAerosol] = useState(null);
 
   const getCoordinates = async (city) => {
     const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city},US&limit=1&appid=${import.meta.env.VITE_WEATHER_API_KEY}`);
@@ -23,18 +24,24 @@ function App() {
     return response
   }
 
+  const fetchAerosolAPI = async (lat, lon) => {
+    const response = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`);
+    return response
+  }
+
   useEffect(()=>{
     const fetchWeather = async () => {
       if (city !== '') {
         const coordinates = await getCoordinates(city);
         if (coordinates) {
           const data = await fetchWeatherAPI(coordinates.lat, coordinates.lon);
+          const particleData = await fetchAerosolAPI(coordinates.lat, coordinates.lon);
           setWeatherData(data.data)
+          setAerosol(particleData.data)
         }
       }
     };
     fetchWeather();
-
   },[city])
 
   const [timeZone, setTimeZone] = useState('')
@@ -72,10 +79,10 @@ function App() {
   return (
     <>
       <Sun/>
-      <Timetill time={time} timeZone={timeZone}/>
-      <Title/>
+      <Title city={city}/>
       <SearchBar city={city} setCity={setCity}/>
-      <Dashboard weatherData={weatherData}/>
+      <Timetill time={time} timeZone={timeZone} city={city}/>
+      <Dashboard weatherData={weatherData} aerosol={aerosol} city={city}/>
     </>
   )
 }
