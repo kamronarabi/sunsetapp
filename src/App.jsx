@@ -13,7 +13,7 @@ function App() {
   const [aerosol, setAerosol] = useState(null);
 
   const getCoordinates = async (city) => {
-    const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city},US&limit=1&appid=${import.meta.env.VITE_WEATHER_API_KEY}`);
+    const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city},US&limit=1&appid=${import.meta.env.VITE_WEATHER_API_KEY}`);
     const lat =response.data[0].lat 
     const lon = response.data[0].lon
     return {lat, lon}
